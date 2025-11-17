@@ -1,0 +1,332 @@
+.section {
+  @include main-page-grid;
+  column-gap: 20px;
+  row-gap: 48px;
+
+  align-self: center;
+  justify-content: center;
+
+  width: 100%;
+  max-width: 1020px;
+
+  @include onTablet() {
+    column-gap: 24px;
+  }
+
+  &--title-block {
+    grid-column: 1 / -1;
+  }
+
+  &--title {
+    grid-column: 1 / -1;
+    grid-row: 1 / 2;
+
+    max-width: 280px;
+
+    font-family: Cinzel, serif;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 32px;
+    letter-spacing: -1.5px;
+    color: $main-text-color;
+
+    text-align: center;
+    justify-self: center;
+
+    @include onTablet() {
+      max-width: 392px;
+
+      font-size: 48px;
+      line-height: 48px;
+    }
+
+    @include onDesktop() {
+      max-width: 498px;
+    }
+  }
+  
+  &--sub-title {
+    max-width: 280px;
+
+    font-family: Cinzel, serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 27px;
+    color: $main-text-color;
+
+    text-align: center;
+    justify-self: center;
+
+    @include onTablet() {
+      max-width: 392px;
+    }
+
+    @include onDesktop() {
+      max-width: 325px;
+    }
+  }
+}
+
+.museum-hours /* ✅ */{
+  row-gap: 32px;
+
+  &__title {
+    position: relative;
+
+    @include onTablet() {
+      grid-column: 1 / 4;
+      justify-self: left;
+    }
+
+    @include onDesktop() {
+      grid-column: 1 / 6;
+    }
+    
+    text-align: left;
+    align-self: left;
+    &::before {
+      content: "Plan your visit";
+      color: $main-red-color;
+      font-family: Cinzel, serif;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 140%;
+
+      position: absolute;
+      top: -16px;
+    }
+  }
+
+  &__locations {
+    grid-column: 1 / -1;
+    grid-row: 2 / -1;
+    
+    display: flex;
+    flex-direction: column;
+    row-gap: 24px;
+    
+    align-items: center;
+
+    @include onTablet() {
+      grid-column: 4 / -1;
+      grid-row: 1 / -1;
+
+      align-items: flex-start;
+    }
+    @include onDesktop() {
+      grid-column: 6 / -1;
+      grid-row: 1 / -1;
+    }
+  }
+
+  &__location {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+
+    column-gap: 24px;
+    row-gap: 16px;
+
+    width: 280px;
+    @include onTablet() {
+      width: 288px;
+    }
+    @include onDesktop() {
+      width: 516px;
+    }
+
+    &-title {
+      grid-column: 1 / -1;
+
+      font-family: Cinzel, serif;
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 30px;
+      letter-spacing: 0px;
+      white-space: nowrap;
+    }
+
+    &-work-time {
+      grid-column: 1 / 2;
+      display: flex;
+      flex-direction: column;
+      width: fit-content;
+      white-space: nowrap;
+      row-gap: 8px;
+    }
+
+    &-days {
+      grid-column: 2 / -1;
+      display: flex;
+      flex-direction: column;
+      width: fit-content;
+      white-space: nowrap;
+      row-gap: 8px;
+    }
+
+    &-closed-on {
+      grid-column: 1 / -1;
+    }
+  }
+}
+
+.now-on-view /* ✅ */ {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  row-gap: 40px;
+  
+  &__button {
+    grid-column: 1 / -1;
+    box-sizing: border-box;
+    height: 56px;
+    width: 280px;
+
+    background-color: $main-red-color;
+
+    justify-self: center;
+
+    cursor: pointer;
+    
+    @include buttonHover(#ae1c23);
+
+    @include onTablet() {
+      width: 392px;
+    }
+
+    @include onDesktop() {
+      width: 324px;
+    }
+    
+    &--link {
+      text-decoration: none;
+      color: #fff;
+    }
+  }
+}
+
+.more-online /* ✅ */ {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  &__offers {
+    @include main-page-grid;
+
+    width: 100%;
+    row-gap: 48px; 
+    column-gap: 24px;
+
+    align-self: center;
+  }
+
+  &__offer {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    justify-self: center;
+    
+    width: 80%;
+
+    row-gap: 32px;
+    
+    @include onTablet() {
+      grid-column: 2 / -2;
+    }
+    @include onDesktop() {
+      grid-column: span 4;
+      width: 100%;
+    }
+
+    &-img {
+
+    }
+
+    &-info {
+      display: flex;
+      flex-direction: column;
+
+      gap: 4px;
+    }
+
+    &-title {
+      font-size: 24px;
+      line-height: 140%;
+      color: $main-red-color;
+
+      text-align: center;
+    }
+
+    &-description {
+      font-family: Roboto, sans-serif;
+
+      text-align: center;
+    }
+  }
+}
+
+.contact-us /* ✅ */ {
+  &__title {
+    grid-column: 1 / -1;
+  }
+
+  &__location {
+    grid-column: 1 / -1;
+    min-width: 237px;
+    display: flex;
+    flex-direction: column;
+
+    row-gap: 16px;
+
+    @include onMobile {
+      justify-self: center;
+    }
+    @include onTablet() {
+      grid-column: span 3;
+    }
+
+    &-title {
+
+    }
+
+    &-description {
+      display: flex;
+      flex-direction: column;
+
+      row-gap: 8px;
+    }
+
+    &-phone {
+      display: flex;
+      flex-direction: column;
+
+      row-gap: 4px;
+
+      &-heading {
+        font-size: 14px;
+      }
+
+      &-number {
+        
+      } 
+    }
+
+    &-place {
+      display: flex;
+      flex-direction: column;
+
+      row-gap: 4px;
+
+      &-heading {
+        font-size: 14px;
+      }
+
+      &-address {
+        line-height: 140%;
+      }
+    }
+  }
+}
+

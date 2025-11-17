@@ -1,0 +1,85 @@
+// #region variable-mixins
+@mixin onMobile() {
+  @media (max-width: $mobile-max-width) {
+    @content;
+  }
+}
+
+@mixin onTablet() {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop() {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+// #endregion variable-mixins
+
+// #region hoverMixins
+@mixin itemHover($property, $value) {
+  transition: #{$property} 0.3s;
+  &:hover {
+    #{$property}: $value;
+    cursor: pointer;
+  }
+}
+
+@mixin hoverUnderlineLeft($marginDown, $color, $time, $origin) {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: $marginDown;
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: $color;
+    transition: transform $time;
+    transform: scale(0);
+    transform-origin: $origin;
+  }
+
+  &:hover::after {
+    transform: scale(1);
+  }
+}
+
+@mixin buttonHover($bg-color) {
+  transition: all 0.3s;
+  &:hover {
+    background-color: $bg-color;
+  }
+}
+
+// #endregion hoverMixins
+
+@mixin contentPaddingInline() {
+  padding-inline: 20px;
+  
+  @include onTablet() {
+    padding-inline: 72px;
+  }
+  
+  @include onDesktop() {
+    padding-inline: 120px;
+  }
+}
+
+@mixin main-page-grid() {
+  --main-page-grid-columns: 2;
+  display: grid;
+  grid-template-columns: repeat(var(--main-page-grid-columns), 1fr);
+  grid-template-rows: auto; // ATTENTION !
+
+  @include onTablet() {
+    --main-page-grid-columns: 6;
+  }
+  @include onDesktop() {
+    --main-page-grid-columns: 12;
+  }
+}
+

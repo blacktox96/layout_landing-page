@@ -1,0 +1,251 @@
+.page {
+  &__html {
+    font-family: Cinzel, serif;
+
+    scroll-behavior: smooth;
+    min-width: 320px;
+  }
+
+  &__body {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.main-text {
+  font-family: Cinzel, serif;
+  font-weight: 400;
+  font-size: $main-font-size;
+  line-height: 27px;
+  color: $main-text-color;
+
+  &--bold {
+    font-family: Cinzel, serif;
+    font-weight: 700;
+    font-size: $main-font-size;
+    line-height: 27px;
+    color: $main-text-color;
+  }
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  
+  @include contentPaddingInline();
+  padding-block: 100px;
+  row-gap: 100px;
+
+  @include onTablet() {
+    padding-block: 140px;
+    row-gap: 140px;
+  }
+}
+
+.displaycase /* 🤔 */{
+  display:  grid;
+  row-gap: 48px;
+  width: 100%;
+
+  &__level {
+    row-gap: 48px;
+  }
+
+  &__imgs {
+    @include main-page-grid;
+    width: 100%; // !!!!
+
+    column-gap: 24px;
+    row-gap: 24px;
+    
+    @include onMobile() {
+      column-gap: 20px;
+      // width: 280px;
+    }
+
+    &--2 {
+      @include onMobile() {
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 8px;
+      }
+
+      @include onTablet() {
+        grid-template-columns: repeat(6, 1fr);
+      }
+
+      @include onDesktop() {
+        grid-template-columns: repeat(12, 1fr);
+      }
+    }
+  }
+
+  &__link {
+    grid-column: span 1;
+    overflow: hidden;
+
+    &--square {
+      @include onTablet() {
+        grid-column: span 2;
+      }
+      @include onDesktop() {
+        grid-column: span 4;
+      }
+    }
+
+    &--wide {
+      @include onTablet () {
+        grid-column: span 4;
+      }
+      @include onDesktop() {
+        grid-column: span 8;
+      }
+    }
+
+    &--3 {
+      @include onTablet() {
+        grid-column: span 3;
+      }
+
+      @include onDesktop() {
+        grid-column: span 4;
+      }
+    }
+
+    &--4 {
+      @include onTablet() {
+        grid-column: span 3;
+      }
+
+      @include onDesktop() {
+        grid-column: span 4;
+      }
+    }
+
+    &--5 {
+      @include onTablet() {
+        display: none;
+      }
+
+      @include onDesktop() {
+        display: block;
+        grid-column: span 4;
+      }
+    }
+  }
+    
+  &__img /* 🤔 */{
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    &--1 { /* issues with centering and zoom on mobile, text on image
+      showing not appropriate, need to*/
+
+      @include onMobile() {
+      object-position: -85px center;
+      transform: scale(1.2); 
+      }
+
+      @include onTablet {
+        object-position: center;
+      }
+
+      @include onDesktop() {
+        object-position: center;
+      }
+    }
+
+    &--7 {
+      object-position: right center;
+    }
+  }
+
+  &__text-block {
+    width: fill-available; // !!!!
+    &--heading {
+      color: $main-red-color;
+    }
+  
+    &--dates {
+      letter-spacing: 0;
+    }
+  }
+}
+
+.contact-form {
+  grid-column: 1 / -1 ;
+  display: flex;
+  flex-direction: column;
+
+  gap: 32px;
+
+  @include onTablet() {
+    grid-column: 4 / -1;
+    grid-row: 2 / 4;
+  }
+  @include onDesktop() {
+    grid-column: 8 / -1;
+  }
+
+  &__fields {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__field {
+    box-sizing: border-box;
+    position: relative;
+
+    padding-left: 16px;
+
+    background-color: #f8f8fa;
+
+    resize: none;
+
+    &::placeholder {
+      position: absolute;
+      top: 14px;
+      left: 16px;
+
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      color: #7e7e83;
+    }
+
+    &:focus,
+    &:not(:placeholder-shown) {
+      outline: 0;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 20px;
+      color: #4e4e4e;
+    }
+
+    &--name-and-mail {
+      height: 48px;
+      overflow: hidden;
+      vertical-align: center;
+    }
+
+    &--message {
+      min-height: 144px;
+      padding-top: 14px;
+    }
+  }
+
+  &__button {
+    box-sizing: border-box;
+    height: 56px;
+
+    background-color: $main-red-color;
+
+    color: #fff;
+
+    cursor: pointer;
+
+    @include buttonHover(#ae1c23);
+  }
+}

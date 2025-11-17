@@ -1,0 +1,538 @@
+.page {
+  &__html {
+    font-family: Cinzel, serif;
+
+    scroll-behavior: smooth;
+    min-width: 320px;
+  }
+
+  &__body {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.main-text {
+  font-family: Cinzel, serif;
+  font-weight: 400;
+  font-size: $main-font-size;
+  line-height: 27px;
+  color: $main-text-color;
+
+  &--bold {
+    font-family: Cinzel, serif;
+    font-weight: 700;
+    font-size: $main-font-size;
+    line-height: 27px;
+    color: $main-text-color;
+  }
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  
+  @include contentPaddingInline();
+  padding-block: 100px;
+  gap: 100px;
+
+  @include onTablet() {
+    padding-block: 140px;
+    gap: 140px;
+  }
+}
+
+.locations-block {
+  display: flex;
+  flex-direction: column;
+
+  &--museum-hours {
+    gap: 24px;
+  }
+
+  &--contact-us {
+    grid-area: contact-us__locations;
+
+    gap: 48px;
+
+    @include onDesktop() {
+      flex-direction: row;
+      gap: 24px;
+    }
+  }
+}
+
+.location { // fix paddings ⬇
+  &--museum-hours {
+    display: grid;
+    grid-template-areas:
+      "location--museum-hours__title location--museum-hours__title"
+      "location--museum-hours__work-time location--museum-hours__days"
+      "location--museum-hours__closed-on location--museum-hours__closed-on";
+    grid-template-columns: min-content auto;
+
+    column-gap: 24px;
+    row-gap: 16px;
+
+    width: 280px;
+
+    @include onTablet() {
+      width: 288px;
+    }
+
+    @include onDesktop() {
+      width: 516px;
+    }
+
+    &__title {
+      grid-area: location--museum-hours__title;
+
+      font-family: Cinzel, serif;
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 30px;
+      letter-spacing: 0px;
+      white-space: nowrap;
+    }
+
+    &__work-time {
+      grid-area: location--museum-hours__work-time;
+      display: flex;
+      flex-direction: column;
+      width: fit-content;
+      white-space: nowrap;
+      gap: 8px;
+    }
+
+    &__days {
+      grid-area: location--museum-hours__days;
+      display: flex;
+      flex-direction: column;
+      width: fit-content;
+      white-space: nowrap;
+      gap: 8px;
+    }
+
+    &__closed-on {
+      grid-area: location--museum-hours__closed-on;
+    }
+  }
+
+  &--contact-us { // fix paddings ⬇
+    display: flex;
+    flex-direction: column;
+    
+    column-gap: 8px;
+    
+    width: 237px;
+    
+    &__title { // fix paddings
+      padding-bottom: 16px;
+    }
+
+    &__phone { // fix paddings
+      display: flex;
+      flex-direction: column;
+    
+      column-gap: 4px;
+
+      &-heading {
+        font-size: 14px;
+      }
+
+      &-number {
+        
+      }
+    }
+
+    &__place { // fix paddings
+      display: flex;
+      flex-direction: column;
+    
+      column-gap: 4px;
+
+      &-heading {
+        font-size: 14px;
+      }
+
+      &-address {
+        line-height: 140%;
+      }
+    }
+  }
+}
+
+.displaycase {  
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  
+  align-self: center;  
+  
+  &__part {
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+
+    gap: 24px;
+    
+    @include onMobile() {
+      column-gap: 20px;
+      width: 280px;
+    }
+
+    @include onTablet() {
+      width: 600px;
+    }
+
+    @include onDesktop() {
+      width: 1020px;
+    }
+
+    &--2 {
+      @include onMobile() {
+        column-gap: 8px;
+      }
+    }
+  }
+    
+  &__img {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    grid-row: 1 / 1;
+
+    &-1 {
+      grid-column: 1 / 4;
+      width: 130px;
+      height: 130px;
+      background-image: url("../images/now_on_view/Layer_41(mob).png");
+      
+      @include onTablet() {
+        grid-column: 1 / 5;
+
+        width: 392px;
+        height: 186px;
+
+        background-image: url("../images/now_on_view/Layer_41.png");
+      }
+
+      @include onDesktop() {
+        grid-column: 1 / 5;
+
+        width: 672px;
+        height: 320px;
+      }
+    }
+    
+    &-2 {
+      grid-column: 4 / -1;
+      width: 130px;
+      height: 130px;
+      background-image: url("../images/now_on_view/Layer_42.png");
+      
+      @include onTablet() {
+        grid-column: 5 / -1;
+
+        width: 186px;
+        height: 186px;
+      }
+
+      @include onDesktop() {
+        grid-column: 5 / -1;
+
+        width: 324px;
+        height: 320px;
+      }
+    }
+
+    &-3 {
+      grid-column: 1 / 3;
+      width: 88px;
+      height: 88px;
+      background-image: url("../images/now_on_view/Layer_43.png");
+
+      @include onTablet() {
+        grid-column: 1 / 4;
+
+        width: 288px;
+        height: 284px;
+      }
+
+      @include onDesktop() {
+        grid-column: 1 / 3;
+
+        width: 324px;
+        height: 320px;
+      }
+    }
+
+    &-4 {
+      grid-column: 3 / 5;
+      width: 88px;
+      height: 88px;
+      background-image: url("../images/now_on_view/Layer_44.png");
+
+      @include onTablet() {
+        grid-column: 4 / -1;
+
+        width: 288px;
+        height: 284px;
+      }
+
+      @include onDesktop() {
+        grid-column: 3 / 5;
+
+        width: 324px;
+        height: 320px;
+      }
+    }
+
+    &-5 {
+      grid-column: 5 / -1;
+      width: 88px;
+      height: 88px;
+      background-image: url("../images/now_on_view/Layer_45.png");
+
+      @include onTablet() {
+        display: none;
+      }
+
+      @include onDesktop() {
+        display: block;
+        grid-column: 5 / -1;
+
+        width: 324px;
+        height: 320px;
+      }
+    }
+
+    &-6 {
+      grid-column: 1 / 4;
+      width: 130px;
+      height: 130px;
+      background-image: url("../images/now_on_view/Layer_46.png");
+
+      @include onTablet() {
+        grid-column: 1 / 3;
+
+        width: 186px;
+        height: 186px;
+      }
+
+      @include onDesktop() {
+        grid-column: 1 / 3;
+
+        width: 324px;
+        height: 320px;
+      }
+    }
+
+    &-7 {
+      grid-column: 4 / -1;
+      width: 130px;
+      height: 130px;
+      background-image: url("../images/now_on_view/Layer_47(mob).png");
+
+      @include onTablet() {
+        grid-column: 3 / -1;
+
+        width: 392px;
+        height: 186px;
+
+        background-image: url("../images/now_on_view/Layer_47.png");
+      }
+
+      @include onDesktop() {
+        grid-column: 3 / -1;
+
+        width: 672px;
+        height: 320px;
+      }
+    }
+  }
+
+  &__text-block {
+    grid-row: 2 / 2;
+    grid-column: 1 / -1;
+  
+    &--heading {
+      color: $main-red-color;
+    }
+  
+    &--dates {
+      letter-spacing: 0;
+    }
+  }
+
+  &__button {
+    box-sizing: border-box;
+    height: 56px;
+    width: 280px;
+
+    background-color: $main-red-color;
+
+    align-self: center;
+
+    cursor: pointer;
+    
+    @include buttonHover(#ae1c23);
+
+    @include onTablet() {
+      width: 392px;
+    }
+
+    @include onDesktop() {
+      width: 324px;
+    }
+    
+    &--link {
+      text-decoration: none;
+      color: #fff;
+    }
+  }
+}
+
+.offer-group {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+
+  width: 280px;
+
+  align-self: center;
+
+  @include onTablet() {
+    width: 392px;
+  }
+
+  @include onDesktop() {
+    width: 324px;
+
+    flex-direction: row;
+    gap: 24px;
+    justify-content: center;
+  }
+}
+
+.offer {
+  display: flex;
+  flex-direction: column;
+
+  width: fit-content;
+
+  position: relative;
+  gap: 32px;
+
+  &__img {
+    height: 280px;
+
+    @include onTablet() {
+      height: 392px;
+    }
+
+    @include onDesktop() {
+      height: 324px;
+    }
+  }
+
+  &__text-block {
+    display: flex;
+    flex-direction: column;
+
+    gap: 4px;
+
+    &--heading {
+      font-size: 24px;
+      line-height: 140%;
+      color: $main-red-color;
+
+      text-align: center;
+    }
+
+    &--description {
+      font-family: Roboto, sans-serif;
+
+      text-align: center;
+    }
+  }
+}
+
+.contact-form {
+  grid-area: contact-us__form;
+  display: flex;
+  flex-direction: column;
+  width: 280px;
+
+  gap: 32px;
+
+  @include onTablet() {
+    width: 288px;
+  }
+
+  @include onDesktop() {
+    width: 411px;
+  }
+
+  &__fields {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__field {
+    box-sizing: border-box;
+    position: relative;
+
+    padding-left: 16px;
+
+    background-color: #f8f8fa;
+
+    resize: none;
+
+    &::placeholder {
+      position: absolute;
+      top: 14px;
+      left: 16px;
+
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      color: #7e7e83;
+    }
+
+    &:focus,
+    &:not(:placeholder-shown) {
+      outline: 0;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 20px;
+      color: #4e4e4e;
+    }
+
+    &--name-and-mail {
+      height: 48px;
+      overflow: hidden;
+      vertical-align: center;
+    }
+
+    &--message {
+      min-height: 144px;
+      padding-top: 14px;
+    }
+  }
+
+  &__button {
+    box-sizing: border-box;
+    height: 56px;
+
+    background-color: $main-red-color;
+
+    color: #fff;
+
+    cursor: pointer;
+
+    @include buttonHover(#ae1c23);
+  }
+}

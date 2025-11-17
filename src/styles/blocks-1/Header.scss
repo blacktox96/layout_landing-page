@@ -1,0 +1,29 @@
+.header {
+  box-sizing: border-box;
+  height: 100vh;
+
+  background-image: url(../images/header/the_met_header_image.png);
+  background-position: center;
+  background-size: cover;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &__title {
+    position: relative;
+    bottom: calc(50vh - #{$top-bar__height});
+    text-align: center;
+    font-family: Cinzel, serif;
+    font-weight: bold;
+    font-size: 40px;
+    line-height: 40px;
+    letter-spacing: -1.5px;
+    color: $header-text-color;
+
+    @include onTablet() {
+      font-size: 64px;
+      line-height: 64px;
+    }
+  }
+}
